@@ -1,0 +1,109 @@
+
+body {
+    background-color: #6ca7ff;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.btn:hover {
+    background-color: rgb(56, 54, 54);
+}
+
+.bi {
+    cursor: pointer;
+}
+
+table {
+    font-family: 'Poppins', sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+th {
+    background-color: #333;
+    color: #fff;
+}
+  
+th, td {
+    padding: .8rem;
+    font-size: 1.14rem;
+}
+
+tr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+}
+  
+tbody {
+    color: #555;
+}
+  
+  
+@media screen and (max-width: 992px){
+    thead {
+        display: none;
+    }
+
+    tr {
+        display: grid;
+    }
+
+    th, td {
+        font-size: 1.3rem;
+    }
+  
+    td {
+        display: block;
+    }
+    
+    td:nth-child(2) {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        order: -1;
+    }
+    
+    td:nth-child(1)::before {
+        content: "CPF";
+        order: 0;
+    }
+
+    td:nth-child(3)::before {
+      content: "Dívida";
+    }
+  
+    td:nth-child(4)::before {
+      content: "Valor";
+    }
+  
+    td:nth-child(5)::before {
+      content: "Data";
+    }
+
+    td:nth-child(6)::before {
+        content: "Cobrador";
+    }
+
+    td:last-child::before {
+        content: 'Ações';
+    }
+  
+    td {
+      text-align: right;
+    }
+  
+    td::before {
+      float: left;
+      margin-right: 3rem;
+      font-weight: bold;
+    }
+  }
