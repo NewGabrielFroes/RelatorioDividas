@@ -11,7 +11,7 @@
 </head>
 <body>
     <secao class="container">
-        <a class="btn btn-dark" href="index.html"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
+        <a href="#form_edit" class="btn btn-dark btnsEditAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
         <table>
             <thead>
                 <tr>
@@ -34,7 +34,7 @@
                     <td>João Moreira</td>
                     <td scope="row" colspan="3">
                         <span class="btn-group">
-                            <a><i class="bi bi-pencil-fill"></i> </a>
+                            <a href="#form_edit" class="btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                         </span>
                         <span class="btn-group">
                             <a><i class="bi bi-trash-fill"></i></a>
@@ -53,7 +53,7 @@
                     <td>Maria Francisca</td>
                     <td>
                         <span class="btn-group">
-                            <a><i class="bi bi-pencil-fill"></i> </a>
+                            <a href="#form_edit" class="btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                         </span>
                         <span class="btn-group">
                             <a><i class="bi bi-trash-fill"></i></a>
@@ -65,6 +65,97 @@
                 </tr>
             </tbody>
         </table>
+        <form action="" class="formInactive" id="form_edit">
+            <div class="linha">
+                <fieldset class="coluna">
+                    <legend class="titulo">Cliente</legend>
+                    <div class="inputBox">
+                        <label for="nome_Gastador">Nome Completo :</label>
+                        <input id="nome_Gastador" type="text" placeholder="Romário de Souza" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cpf_Gastador">CPF :</label>
+                        <input id="cpf_Gastador" type="text" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="data_Criacao_Conta">Data da geração da dívida :</label>
+                        <input id="data_Criacao_Conta" type="date" placeholder="01/01/2001" required>
+                    </div>
+                    <div class="inputBox">
+                        <label>Gênero :</label>
+                        <div class="opcoes">
+                            <div class="opcao">
+                                <input name="sexo" class="opcao__input" id="masculino" value="masculino" type="radio" checked>
+                                <label class="opcao__label" for="masculino">Masculino</label>
+                            </div>
+                            <div class="opcao">
+                                <input name="sexo" class="opcao__input" id="feminino" value="feminino" type="radio">
+                                <label class="opcao__label" for="feminino">Feminino</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>    
+                <fieldset class="coluna">
+                    <legend class="titulo">Cobrador</legend>
+                    <div class="inputBox">
+                        <label for="nome_Pagador">Nome Completo :</label>
+                        <input id="nome_Pagador" type="text" placeholder="José Roberto Gama" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="cpf_Pagador">CPF :</label>
+                        <input id="cpf_Pagador" type="text" placeholder="000.000.000-00" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="data_Pagamento">Data do pagamento da dívida :</label>
+                        <input id="data_Pagamento" type="date" placeholder="01/01/2001" required>
+                    </div>
+                    <div class="inputBox">
+                        <label>Gênero :</label>
+                        <div class="opcoes">
+                            <div class="opcao">
+                                <input name="sexo_Pagador" class="opcao__input" id="masculinoCobrador" value="masculino" type="radio">
+                                <label class="opcao__label" for="masculinoCobrador">Masculino</label>
+                            </div>
+                            <div class="opcao">
+                                <input name="sexo_Pagador" class="opcao__input" id="femininoCobrador" value="feminino" type="radio" checked>
+                                <label class="opcao__label" for="femininoCobrador">Feminino</label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="coluna">
+                    <legend class="titulo">Dívida</legend>
+                    <div class="inputBox">
+                        <label for="nome_Conta">Nome da conta :</label>
+                        <input id="nome_Conta" type="text" placeholder="conta de luz" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="valor_Conta">Valor da dívida(em reais) :</label>
+                        <input id="valor_Conta" type="number" placeholder="R$" required>
+                    </div>
+                    <div class="inputBox">
+                        <label for="data_Vencimento">Data de vencimento :</label>
+                        <input id="data_Vencimento" type="date" required>
+                    </div>
+                    <div class="inputBox">
+                       <label>Status</label>
+                        <div class="opcoes">
+                            <div class="opcao">
+                                <input name="status" class="opcao__input" id="paga" value="paga" type="radio">
+                                <label class="opcao__label" for="paga">Paga</label>
+                            </div>
+                            <div class="opcao">
+                                <input name="status" class="opcao__input" id="naopaga" value="naopaga" type="radio" checked>
+                                <label class="opcao__label" for="naopaga">Não paga</label>
+                            </div>
+                        </div>
+                    </div> 
+                </fieldset>
+            </div>
+            <input type="submit" value="Enviar" class="submit-btn">
+        </form>
     </secao>
+    </style>
+<script src="js/index.js"></script>
 </body>
 </html>
