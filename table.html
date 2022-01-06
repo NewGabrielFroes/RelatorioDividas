@@ -10,23 +10,23 @@
     <title>Tabela de dívidas</title>
 </head>
 <body>
-    <secao class="container">
+    <section id="smallContainer" class="container smallContainer">
         <a href="#form_edit" class="btn btn-dark btnsEditAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
         <table>
             <thead>
                 <tr>
-                    <th>CPF</th>
+                    <th>STATUS</th>
                     <th>NOME</th>
                     <th>DÍVIDA</th>
                     <th>VALOR</th>
                     <th>DATA</th>
-                    <th>COBRADOR</th>
+                    <th>PAGADOR</th>
                     <th>AÇÕES</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>777.777.777-77</td>
+                    <td>Paga</td>
                     <td>Rafael Juninho</td>
                     <td>Cartão de crédito</span></td>
                     <td>252,20R$</td>
@@ -34,18 +34,18 @@
                     <td>João Moreira</td>
                     <td scope="row" colspan="3">
                         <span class="btn-group">
-                            <a href="#form_edit" class="btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
+                            <a href="#form_edit" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                         </span>
                         <span class="btn-group">
-                            <a><i class="bi bi-trash-fill"></i></a>
+                            <a class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
                         </span>
                         <span class="btn-group">
-                            <a><i class="bi bi-eye-fill"></i></a>
+                            <a class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td>481.659.009-94</td>
+                    <td>Não paga</td>
                     <td>Marina Luana Marcela Lima</td>
                     <td>Mensalidade da faculdade</span></td>
                     <td>445,20R$</td>
@@ -53,19 +53,20 @@
                     <td>Maria Francisca</td>
                     <td>
                         <span class="btn-group">
-                            <a href="#form_edit" class="btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
+                            <a href="#form_edit" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                         </span>
                         <span class="btn-group">
-                            <a><i class="bi bi-trash-fill"></i></a>
+                            <a class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
                         </span>
                         <span class="btn-group">
-                            <a><i class="bi bi-eye-fill"></i></a>
+                            <a class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
                         </span>
                     </td>
                 </tr>
             </tbody>
         </table>
         <form action="" class="formInactive" id="form_edit">
+            <a class="btns btnsExit" href="#smallContainer"><i class="bi bi-x-circle"></i></a>
             <div class="linha">
                 <fieldset class="coluna">
                     <legend class="titulo">Cliente</legend>
@@ -154,7 +155,61 @@
             </div>
             <input type="submit" value="Enviar" class="submit-btn">
         </form>
-    </secao>
+    </section>
+    <section class="container showDetails">
+            <table class="tableShowDetails">
+                <thead class="showDetailsThead">
+                    <tr class="showDetailsTr">
+                    </tr>
+                </thead>
+                <tbody class="showDetailsContainer showDetailsContainer0 showDetailsInactive">
+                    <tr class="showDetailsTr">
+                        <td>Gastador</td>
+                        <td>Rafael Juninho</td>
+                        <td>20/02/2022</td>
+                        <td>Masculino</td>
+                        <td>789.456.623-29</td>
+                    </tr>
+                    <tr class="showDetailsTr pagador">
+                        <td>Pagador</td>
+                        <td>João Moreira</td>
+                        <td>28/02/2022</td>
+                        <td>Masculino</td>
+                        <td>879.465.632-92</td>
+                    </tr>
+                    <tr class="showDetailsTr conta">
+                        <td>Conta</td>
+                        <td>Cartão de crédito</td>
+                        <td>Paga</td>
+                        <td>17/03/2022</td>
+                        <td>252,20R$</td>
+                    </tr>
+                </tbody>
+                <tbody class="showDetailsContainer showDetailsContainer1 showDetailsInactive">
+                    <tr class="showDetailsTr">
+                        <td>Gastador</td>
+                        <td>Marina Luana Marcela Lima</td>
+                        <td>18/05/2022	</td>
+                        <td>Feminino</td>
+                        <td>456.789.623-29</td>
+                    </tr>
+                    <tr class="showDetailsTr pagador">
+                        <td>Pagador</td>
+                        <td>Maria Francisca</td>
+                        <td>20/05/2022</td>
+                        <td>Feminino</td>
+                        <td>326.465.632-92</td>
+                    </tr>
+                    <tr class="showDetailsTr conta">
+                        <td>Conta</td>
+                        <td>Mensalidade da faculdade</td>
+                        <td>Paga</td>
+                        <td>20/05/2022</td>
+                        <td>445,20R$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
     </style>
 <script src="js/index.js"></script>
 </body>

@@ -122,10 +122,14 @@ input:focus {
 }
 
 
-.btnsEdit {
+.btns {
     color: inherit;
 }
 
+.btnsExit {
+  font-size: 35px;
+  float: right;
+}
 
 .formInactive {
     display: none;
@@ -144,8 +148,100 @@ input:focus {
 .submit-btn:hover{
   background: #5E96EB;
 }
+
+.showDetails {
+  width: 100%;
+}
+
+.tableShowDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.showDetailsContainer {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.showDetailsInactive {
+  display: none;
+}
+
+.showDetailsThead {
+  display: none;
+}
+
+.showDetailsTr {
+  display: grid;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.showDetailsTr>:nth-child(n) {
+  font-size: 1.1rem;
+}
+
+.showDetailsTr > td {
+  display: block;
+}
+
+
+.showDetailsTr > td:nth-child(1) {
+  content: "Gastador";
+  background-color: #333;
+  color: #fff;
+  text-align: center;
   
-@media screen and (max-width: 992px){
+}
+
+.showDetailsTr > td:nth-child(2)::before {
+  content: "Nome";
+}
+
+.showDetailsTr > td:nth-child(3)::before {
+content: "Criação da conta";
+}
+
+.showDetailsTr > td:nth-child(4)::before {
+content: "Sexo";
+}
+
+.showDetailsTr > td:nth-child(5)::before {
+content: "CPF";
+}
+
+.pagador > td:nth-child(3)::before {
+  content: "Pagamento da conta";
+}
+
+.conta > td:nth-child(3)::before {
+  content: "Status";
+}
+
+.conta > td:nth-child(4)::before {
+  content: "Data de vencimento";
+}
+
+.conta > td:nth-child(5)::before {
+  content: "Valor";
+}
+
+
+
+.showDetailsTr > td {
+  text-align: right;
+}
+
+.showDetailsTr > td::before {
+  float: left;
+  margin-right: 3rem;
+  font-weight: bold;
+}
+  
+@media screen and (max-width: 992px) {
     thead {
         display: none;
     }
@@ -170,7 +266,7 @@ input:focus {
     }
     
     td:nth-child(1)::before {
-        content: "CPF";
+        content: "Status";
         order: 0;
     }
 
