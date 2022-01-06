@@ -178,6 +178,7 @@ input:focus {
   display: grid;
   margin-top: 0;
   margin-bottom: 0;
+  border: 2px solid black;
 }
 
 .showDetailsTr>:nth-child(n) {
