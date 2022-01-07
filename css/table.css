@@ -8,7 +8,7 @@ body {
 }
 
 .container {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 
@@ -205,15 +205,15 @@ input:focus {
 }
 
 .showDetailsTr > td:nth-child(3)::before {
-content: "Criação da conta";
+  content: "Criação da conta";
 }
 
 .showDetailsTr > td:nth-child(4)::before {
-content: "Sexo";
+  content: "Sexo";
 }
 
 .showDetailsTr > td:nth-child(5)::before {
-content: "CPF";
+  content: "CPF";
 }
 
 .pagador > td:nth-child(3)::before {
@@ -232,8 +232,6 @@ content: "CPF";
   content: "Valor";
 }
 
-
-
 .showDetailsTr > td {
   text-align: right;
 }
@@ -242,6 +240,13 @@ content: "CPF";
   float: left;
   margin-right: 3rem;
   font-weight: bold;
+}
+
+.btnsExitDetails {
+  font-size: 35px;
+  color: #000;
+  float: right;
+  display: none;
 }
 
 @media screen and (max-width: 1196px) {

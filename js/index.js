@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnsDelete = document.querySelectorAll('.btnsDelete')
     const btnsShowDetails = document.querySelectorAll('.btnsShowDetails')
     const btnsExit = document.querySelector('.btnsExit')
+    const btnsExitDetails = document.querySelector('.btnsExitDetails')
     const form = document.querySelector('#form_edit')
-    const showDetailsContainer = document.querySelectorAll('.showDetailsContainer')
-    
+    const showDetailsContainers = document.querySelectorAll('.showDetailsContainer')
+    const showDetails = document.querySelector(".showDetails")
 
     btnsEditAdd.forEach((i => {
         i.addEventListener('click', () => {
@@ -14,42 +15,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }))
 
     btnsDelete.forEach((i) => {
+        const id = selectDetailsContainer(i, 3).replace(".", "")
         i.addEventListener('click', () => {
             const parent = nthParent(i, 3)
-            const isFormInactive = form.classList.contains("formInactive")
-            let isShowDetailsInactive = true
-            for(let i = 0; i < showDetailsContainer.length; i++){
-                if (!showDetailsContainer[i].classList.contains("showDetailsInactive")){
-                    isShowDetailsInactive = false
+            //const isFormInactive = form.classList.contains("formInactive")
+            console.log(id)
+            for(let i = 0; i < showDetailsContainers.length; i++){
+                console.log(showDetailsContainers[i])
+                if (showDetailsContainers[i].classList.contains(id)) {
+                    showDetailsContainers[i].remove()
+                    form.classList.add("formInactive")
+                    showDetails.style.display = 'none'
                 }
             }
-
-            console.log(isShowDetailsInactive)
-
-            if (isFormInactive && isShowDetailsInactive) {
-                parent.remove()
-            }
-            else {
-                alert("Você NÃO pode apagar enquanto estiver editando, adicionando ou vendo os detalhes de uma dívida.")
-            }
+            parent.remove()
         })
     })
 
     btnsShowDetails.forEach((i) => {
-        const tr = nthParent(i, 3)
-        const tbody = nthParent(i, 4)
-        const lenChildrenTBody = tbody.children.length
-        let containerId = '.showDetailsContainer'
-        for (let i = 0; i < lenChildrenTBody; i++) {
-            if (tbody.children[i] == tr) {
-                containerId+= i
-                break
-            }
-        }
+        const containerId = selectDetailsContainer(i, 3)
         i.addEventListener('click', () => {
-            console.log(containerId)
+            showDetailsContainers.forEach((i) => {
+                i.classList.add("showDetailsInactive")
+            })
             const showDetailsContainer = document.querySelector(containerId)
-            showDetailsContainer.classList.toggle("showDetailsInactive")
+            showDetails.style.display = 'block'
+            btnsExitDetails.style.display = 'block'
+            showDetailsContainer.classList.remove("showDetailsInactive")
         })
     })
 
@@ -57,6 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
         form.classList.add("formInactive")
     })
 
+    btnsExitDetails.addEventListener(('click'), () => {
+        showDetailsContainers.forEach((i) => {
+            i.classList.add("showDetailsInactive")
+        })
+        btnsExitDetails.style.display = 'none'
+        
+    })
 
 })
 
@@ -67,3 +66,14 @@ function nthParent(element, n) {
     return element;
 }
 
+function selectDetailsContainer(element, n) {
+    const tr = nthParent(element, n)
+    const tbody = nthParent(element, ++n)
+    const lenChildrenTBody = tbody.children.length
+    let containerId = '.showDetailsContainer'
+    for (let i = 0; i < lenChildrenTBody; i++) {
+        if (tbody.children[i] == tr) {
+            return containerId += i
+        }
+    }
+}
