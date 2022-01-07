@@ -4,13 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controlador de Dívidas</title>
-    <link rel="stylesheet" href="css/style.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/table.css">
+    <title>Tabela de dívidas</title>
 </head>
 <body>
-    <section class="container">
-        <form action="">
+    <section id="smallContainer" class="container smallContainer">
+        <a href="#form_edit" class="btn btn-dark btnsEditAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>STATUS</th>
+                    <th>NOME</th>
+                    <th>DÍVIDA</th>
+                    <th>VALOR</th>
+                    <th>DATA</th>
+                    <th>PAGADOR</th>
+                    <th>AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paga</td>
+                    <td>Rafael Juninho</td>
+                    <td>Cartão de crédito</span></td>
+                    <td>252,20R$</td>
+                    <td>20/02/2022</td>
+                    <td>João Moreira</td>
+                    <td scope="row" colspan="3">
+                        <span class="btn-group">
+                            <a href="#form_edit" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
+                        </span>
+                        <span class="btn-group">
+                            <a class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
+                        </span>
+                        <span class="btn-group">
+                            <a href="#showDetailsContainer0" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Não paga</td>
+                    <td>Marina Luana Marcela Lima</td>
+                    <td>Mensalidade da faculdade</span></td>
+                    <td>445,20R$</td>
+                    <td>18/05/2022</td>
+                    <td>Maria Francisca</td>
+                    <td>
+                        <span class="btn-group">
+                            <a href="#form_edit" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
+                        </span>
+                        <span class="btn-group">
+                            <a class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
+                        </span>
+                        <span class="btn-group">
+                            <a href="#showDetailsContainer1" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="" class="formInactive" id="form_edit">
+            <a class="btns btnsExit" href="#smallContainer"><i class="bi bi-x-circle"></i></a>
             <div class="linha">
                 <fieldset class="coluna">
                     <legend class="titulo">Cliente</legend>
@@ -99,6 +155,63 @@
             </div>
             <input type="submit" value="Enviar" class="submit-btn">
         </form>
-    </section>       
+    </section>
+    <section id="showDetails" class="container showDetails">
+        <a class="btns btnsExitDetails" href="#smallContainer"><i class="bi bi-x-circle"></i></a>
+            <table class="tableShowDetails">
+                <thead class="showDetailsThead">
+                    <tr class="showDetailsTr">
+                    </tr>
+                </thead>
+                <tbody id="showDetailsContainer0" class="showDetailsContainer showDetailsContainer0 showDetailsInactive">
+                    <tr class="showDetailsTr">
+                        <td>Gastador</td>
+                        <td>Rafael Juninho</td>
+                        <td>20/02/2022</td>
+                        <td>Masculino</td>
+                        <td>789.456.623-29</td>
+                    </tr>
+                    <tr class="showDetailsTr pagador">
+                        <td>Pagador</td>
+                        <td>João Moreira</td>
+                        <td>28/02/2022</td>
+                        <td>Masculino</td>
+                        <td>879.465.632-92</td>
+                    </tr>
+                    <tr class="showDetailsTr conta">
+                        <td>Conta</td>
+                        <td>Cartão de crédito</td>
+                        <td>Paga</td>
+                        <td>17/03/2022</td>
+                        <td>252,20R$</td>
+                    </tr>
+                </tbody>
+                <tbody id="showDetailsContainer1" class="showDetailsContainer showDetailsContainer1 showDetailsInactive">
+                    <tr class="showDetailsTr">
+                        <td>Gastador</td>
+                        <td>Marina Luana Marcela Lima</td>
+                        <td>18/05/2022	</td>
+                        <td>Feminino</td>
+                        <td>456.789.623-29</td>
+                    </tr>
+                    <tr class="showDetailsTr pagador">
+                        <td>Pagador</td>
+                        <td>Maria Francisca</td>
+                        <td>20/05/2022</td>
+                        <td>Feminino</td>
+                        <td>326.465.632-92</td>
+                    </tr>
+                    <tr class="showDetailsTr conta">
+                        <td>Conta</td>
+                        <td>Mensalidade da faculdade</td>
+                        <td>Paga</td>
+                        <td>20/05/2022</td>
+                        <td>445,20R$</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </style>
+<script src="js/index.js"></script>
 </body>
 </html>
