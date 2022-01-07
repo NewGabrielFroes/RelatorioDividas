@@ -163,7 +163,9 @@ input:focus {
   margin-bottom: 40px;
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  justify-content: space-around;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .showDetailsInactive {
@@ -241,6 +243,14 @@ content: "CPF";
   margin-right: 3rem;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1196px) {
+  .showDetailsContainer {
+    background-color: rgb(77, 76, 76);
+    border: 2px solid black;
+    padding: 10px;
+  }
+}
   
 @media screen and (max-width: 992px) {
     thead {
@@ -259,17 +269,19 @@ content: "CPF";
         display: block;
     }
     
-    td:nth-child(2) {
+    td:nth-child(2):not(.showDetailsTr > td){
         background-color: #333;
         color: #fff;
         text-align: center;
         order: -1;
     }
+
     
-    td:nth-child(1)::before {
+    td:nth-child(1):not(.showDetailsTr > td)::before{
         content: "Status";
         order: 0;
     }
+    
 
     td:nth-child(3)::before {
       content: "Dívida";
@@ -300,6 +312,22 @@ content: "CPF";
       margin-right: 3rem;
       font-weight: bold;
     }
+  }
+
+  @media screen and (max-width: 400px){
+    th, td {
+      font-size: 1rem !important;
+    }
+    .showDetailsTr { 
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 280px){
+    th, td {
+      font-size: 0.9rem !important;
+    }
+
   }
 
 
