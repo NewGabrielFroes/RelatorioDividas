@@ -64,8 +64,7 @@
 </head>
 <body>
     <section id="smallContainer" class="container smallContainer">
-        <a href="#form_edit" class="btn btn-dark btnsEditAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
-        
+        <a href="#form_edit" class="btn btn-dark btnsEditAdd btnsAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
         <!-- 
         ///////////////////
         ////TABELA/////////
@@ -201,7 +200,7 @@
                     </div> 
                 </fieldset>
             </div>
-            <input name="submit" type="submit" value="Enviar" class="submit-btn">
+            <input type="submit" class="submit-btn" name="submit" value="Enviar">
         </form>
     </section>
 
@@ -267,6 +266,6 @@
             </table>
         </section>
     </style>
-<script src="js/index.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

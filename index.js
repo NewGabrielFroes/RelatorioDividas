@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const btnsEditAdd = document.querySelectorAll('.btnsEditAdd')
+    const btnsEdit = document.querySelectorAll('.btnsEdit')
+    const btnsAdd = document.querySelectorAll('.btnsAdd')
+    const btnsEditAdd = [...btnsEdit, ...btnsAdd]
     const btnsDelete = document.querySelectorAll('.btnsDelete')
     const btnsShowDetails = document.querySelectorAll('.btnsShowDetails')
     const btnsExit = document.querySelector('.btnsExit')
@@ -7,12 +9,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('#form_edit')
     const showDetailsContainers = document.querySelectorAll('.showDetailsContainer')
     const showDetails = document.querySelector(".showDetails")
+    const inputSubmit = document.querySelector(".submit-btn")
 
     btnsEditAdd.forEach((i => {
-        i.addEventListener('click', () => {
-            form.classList.remove("formInactive")
-        })
+       i.addEventListener('click', () => {
+           form.classList.remove("formInactive")
+            if (i.classList.contains("btnsEdit")) {
+                inputSubmit.name = "btnEditar"
+                inputSubmit.value = "Editar"
+            }
+            else {
+                inputSubmit.name = "btnAdicionar"
+                inputSubmit.value = "Adicionar"
+            }
+       })
     }))
+
 
     btnsDelete.forEach((i) => {
         const id = selectDetailsContainer(i, 3).replace(".", "")
