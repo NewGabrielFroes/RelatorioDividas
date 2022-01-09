@@ -3,10 +3,27 @@
     include("conexao.php");
     
     ///////////////////
-    ////SUBMIT/////////
+    ////BOTÕES/////////
     /////////////////// 
 
-    if (isset($_POST['submit'])) {
+
+
+    if (isset($_POST['btnAdicionar'])) {
+        echo "Botão de adicionar ativado";
+    }
+    else if (isset($_POST['btnEditar'])) {
+        echo "Botão de editar ativado";
+    }
+
+
+
+    ///////////////////
+    ////SUBMIT/////////
+    ///////////////////
+
+
+
+    /*if (isset($_POST['submit'])) {
 
         $nome_Gastador = $_POST['nome_Gastador'];
         $cpf_Gastador = $_POST['cpf_Gastador'];
@@ -29,7 +46,7 @@
 
         $conta = mysqli_query($conn, "INSERT INTO conta(nome_conta, valor_conta, status_conta, data_vencimento, nome_gastador, nome_pagador) VALUES ('$nome_Conta','$valor_Conta','$status','$data_Vencimento', '$nome_Gastador', '$nome_Pagador')");
 
-    }
+    }*/
 
     ///////////////////
     ////EDITAR/////////
@@ -84,8 +101,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <!-- <td>Paga</td>
+                <!-- <tr>
+                    <td>Paga</td>
                     <td>Rafael Juninho</td>
                     <td>Cartão de crédito</span></td>
                     <td>252,20R$</td>
