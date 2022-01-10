@@ -2,29 +2,13 @@
 
     include("conexao.php");
     
+
     ///////////////////
-    ////BOTÕES/////////
-    /////////////////// 
-
-
+    ////ADICIONAR//////
+    ///////////////////
 
     if (isset($_POST['btnAdicionar'])) {
-        echo "Botão de adicionar ativado";
-    }
-    else if (isset($_POST['btnEditar'])) {
-        echo "Botão de editar ativado";
-    }
-
-
-
-    ///////////////////
-    ////SUBMIT/////////
-    ///////////////////
-
-
-
-    /*if (isset($_POST['submit'])) {
-
+   
         $nome_Gastador = $_POST['nome_Gastador'];
         $cpf_Gastador = $_POST['cpf_Gastador'];
         $data_Criacao_Conta = $_POST['data_Criacao_Conta'];
@@ -40,31 +24,74 @@
         $data_Vencimento = $_POST['data_Vencimento'];
         $status = $_POST['status'];
 
-        $gastador = mysqli_query($conn, "INSERT INTO gastador(nome_Gastador, cpf_gastador, sexo_gastador, data_criacao_conta) VALUES ('$nome_Gastador', '$cpf_Gastador', '$sexo', '$data_Criacao_Conta')");
+        $gastador = mysqli_query($conn, "INSERT INTO gastador(nome_Gastador, cpf_gastador, sexo_gastador, data_criacao_conta) 
+        VALUES ('$nome_Gastador', '$cpf_Gastador', '$sexo', '$data_Criacao_Conta')");
 
-        $pagador = mysqli_query($conn, "INSERT INTO pagador(nome_pagador, cpf_pagador, sexo_pagador, data_pagamento) VALUES ('$nome_Pagador','$cpf_Pagador','$sexo_Pagador','$data_Pagamento')");
+        $pagador = mysqli_query($conn, "INSERT INTO pagador(nome_pagador, cpf_pagador, sexo_pagador, data_pagamento) 
+        VALUES ('$nome_Pagador','$cpf_Pagador','$sexo_Pagador','$data_Pagamento')");
 
-        $conta = mysqli_query($conn, "INSERT INTO conta(nome_conta, valor_conta, status_conta, data_vencimento, nome_gastador, nome_pagador) VALUES ('$nome_Conta','$valor_Conta','$status','$data_Vencimento', '$nome_Gastador', '$nome_Pagador')");
+        $conta = mysqli_query($conn, "INSERT INTO conta(nome_conta, valor_conta, status_conta, data_vencimento, nome_gastador, nome_pagador) 
+        VALUES ('$nome_Conta','$valor_Conta','$status','$data_Vencimento', '$nome_Gastador', '$nome_Pagador')");
 
-    }*/
+    }
 
     ///////////////////
     ////EDITAR/////////
     /////////////////// 
 
+    else if (isset($_POST['btnEditar'])) {
+        
+        $nome_Gastador = $_POST['nome_Gastador'];
+        $cpf_Gastador = $_POST['cpf_Gastador'];
+        $data_Criacao_Conta = $_POST['data_Criacao_Conta'];
+        $sexo = $_POST['sexo'];
 
+        $nome_Pagador = $_POST['nome_Pagador'];
+        $cpf_Pagador = $_POST['cpf_Pagador'];
+        $data_Pagamento = $_POST['data_Pagamento'];
+        $sexo_Pagador = $_POST['sexo_Pagador'];
+
+        $nome_Conta = $_POST['nome_Conta'];
+        $valor_Conta = $_POST['valor_Conta'];
+        $data_Vencimento = $_POST['data_Vencimento'];
+        $status = $_POST['status'];
+
+        $gastador = mysqli_query($conn, "UPDATE gastador
+        SET nome_Gastador = '$nome_Gastador',
+            cpf_gastador = '$cpf_Gastador',
+            sexo_gastador = '$sexo',
+            data_criacao_conta = '$data_Criacao_Conta'
+        WHERE coluna de variaveis unicas = identidade;");  //SQL
+
+        $pagador = mysqli_query($conn, "UPDATE pagador
+        SET nome_pagador = '$nome_Pagador',
+            cpf_pagador = '$cpf_Pagador',
+            sexo_pagador = '$sexo_Pagador',
+            data_pagamento = '$data_Pagamento'
+        WHERE coluna de variaveis unicas = identidade;");  //SQL
+
+        $conta = mysqli_query($conn, "UPDATE conta
+        SET nome_conta = '$nome_Conta',
+            valor_conta = '$valor_Conta',
+            data_vencimento = '$data_Vencimento',
+            status_conta = '$status',
+            nome_gastador = '$nome_Gastador',
+            nome_pagador = '$nome_Pagador'
+        WHERE coluna de variaveis unicas = identidade;");  //SQL
+
+    }
 
     ///////////////////
     ////EXCLUIR////////
     /////////////////// 
 
-
+    //HTML
 
     ///////////////////
     ////MOSTAR/////////
     /////////////////// 
 
-
+    //HTML
 
 ?>
 
