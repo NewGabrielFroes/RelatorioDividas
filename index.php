@@ -131,7 +131,7 @@
         
         <table>
             <thead>
-                <tr>
+               <!-- <tr>
                     <th>STATUS</th>
                     <th>NOME</th>
                     <th>DÍVIDA</th>
