@@ -1,7 +1,6 @@
 <?php
 
     include("conexao.php");
-    
 
     ///////////////////
     ////ADICIONAR//////
@@ -81,15 +80,27 @@
 
     }
 
-    ///////////////////
-    ////EXCLUIR////////
-    /////////////////// 
+    else if (isset($_POST['action'])) {
+        if ($_POST['action'] == 'delete') {
+            ///////////////////
+            ////EXCLUIR////////
+            /////////////////// 
+        }
+        else if (($_POST['action'] == 'details')) {
+            ///////////////////
+            ////MOSTAR/////////
+            /////////////////// 
+        }
+    }
+
+
 
     //HTML
 
-    ///////////////////
-    ////MOSTAR/////////
-    /////////////////// 
+
+    
+
+
 
     //HTML
 
@@ -104,6 +115,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/table.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Tabela de dívidas</title>
 </head>
 <body>
@@ -128,7 +140,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr>
+                <tr>
                     <td>Paga</td>
                     <td>Rafael Juninho</td>
                     <td>Cartão de crédito</span></td>
@@ -140,10 +152,10 @@
                             <a href="#form_edit" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                         </span>
                         <span class="btn-group">
-                            <a class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
+                            <a value="delete" class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
                         </span>
                         <span class="btn-group">
-                            <a href="#showDetailsContainer0" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
+                            <a value="showDetails" href="#showDetailsContainer0" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
                         </span>
                     </td> -->
                 </tr>
@@ -310,6 +322,7 @@
             </table>
         </section>
     </style>
+
 <script src="index.js"></script>
 </body>
 </html>

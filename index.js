@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnsEditAdd = [...btnsEdit, ...btnsAdd]
     const btnsDelete = document.querySelectorAll('.btnsDelete')
     const btnsShowDetails = document.querySelectorAll('.btnsShowDetails')
+    const btnsDeleteShowDetails = [...btnsDelete, ...btnsShowDetails]
     const btnsExit = document.querySelector('.btnsExit')
     const btnsExitDetails = document.querySelector('.btnsExitDetails')
     const form = document.querySelector('#form_edit')
@@ -23,6 +24,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 inputSubmit.value = "Adicionar"
             }
        })
+    }))
+
+    btnsDeleteShowDetails.forEach((i => {
+        i.addEventListener('click', () => {
+            let typeBtn
+            if (i.classList.contains("btnsDelete")){
+                typeBtn = 'delete'
+            }
+            else {
+                typeBtn = 'details'
+            }
+            let dados = {'action':typeBtn}
+			$.post("index.php",dados,function(result, status){
+			})
+        })
     }))
 
 
@@ -71,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
+
+
+
 function nthParent(element, n) {
     while(n-- && element){  
         element = element.parentNode;
@@ -89,3 +108,4 @@ function selectDetailsContainer(element, n) {
         }
     }
 }
+
