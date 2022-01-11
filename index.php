@@ -131,7 +131,7 @@
         
         <table>
             <thead>
-               <!-- <tr>
+               <tr>
                     <th>STATUS</th>
                     <th>NOME</th>
                     <th>DÍVIDA</th>
@@ -142,7 +142,7 @@
                 </tr>
             </thead>
             <tbody>
-               <tr>
+               <!-- <tr>
                     <td>Paga</td>
                     <td>Rafael Juninho</td>
                     <td>Cartão de crédito</span></td>
