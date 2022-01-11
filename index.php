@@ -322,7 +322,6 @@
             </table>
         </section>
     </style>
-
 <script src="index.js"></script>
 </body>
 </html>
