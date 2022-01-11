@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             let dados = {'action':typeBtn}
 			$.post("index.php",dados,function(result, status){
+				console.log(status)
+				console.log("RESULTADO DO ECHO --> ", result)
 			})
         })
     }))
@@ -47,9 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         i.addEventListener('click', () => {
             const parent = nthParent(i, 3)
             //const isFormInactive = form.classList.contains("formInactive")
-            console.log(id)
             for(let i = 0; i < showDetailsContainers.length; i++){
-                console.log(showDetailsContainers[i])
                 if (showDetailsContainers[i].classList.contains(id)) {
                     showDetailsContainers[i].remove()
                     form.classList.add("formInactive")

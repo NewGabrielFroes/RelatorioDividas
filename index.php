@@ -82,11 +82,13 @@
 
     else if (isset($_POST['action'])) {
         if ($_POST['action'] == 'delete') {
+            echo("DELETADO");
             ///////////////////
             ////EXCLUIR////////
             /////////////////// 
         }
         else if (($_POST['action'] == 'details')) {
+            echo("DETALHADO");
             ///////////////////
             ////MOSTAR/////////
             /////////////////// 
@@ -140,7 +142,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+               <tr>
                     <td>Paga</td>
                     <td>Rafael Juninho</td>
                     <td>Cartão de crédito</span></td>
