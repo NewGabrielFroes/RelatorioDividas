@@ -50,7 +50,11 @@ tbody {
     color: #555;
 }
 
-form {
+/* form {
+  background: #6ca7ff;
+} */
+
+#form_edit {
   padding:20px;
   width: 100%;
   background: #fff;

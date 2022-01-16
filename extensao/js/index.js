@@ -12,6 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const showDetails = document.querySelector(".showDetails")
     const inputSubmit = document.querySelector(".submit-btn")
 
+    // inputSubmit.addEventListener(('click'), () => {
+    //     window.location.href = "index.php"
+    //     window.location.reload()
+    // })
+
     btnsEditAdd.forEach((i => {
        i.addEventListener('click', () => {
            form.classList.remove("formInactive")
