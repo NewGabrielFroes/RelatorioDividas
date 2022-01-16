@@ -2,13 +2,11 @@
 
     include("conexao.php");
 
-    $sql_code = "SELECT * FROM conta";
-    $sql_code2 = "SELECT 
+    $sql_code = "SELECT 
     c.status_conta, g.nome_Gastador, c.nome_conta, c.valor_conta, c.data_vencimento, c.id_conta, p.nome_pagador
     FROM gastador g, pagador p, conta c 
     WHERE c.id_gastador = g.id_gastador and c.id_pagador = p.id_pagador ORDER BY c.id_conta DESC";
     $sql_query = $conn -> query($sql_code) or die($conn -> error);
-    $sql_query2 = $conn -> query($sql_code2) or die($conn -> error);
 
     ///////////////////
     ////EDITAR/////////
@@ -110,7 +108,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($valor = $sql_query2 -> fetch_array() ) { ?>
+                    <?php while($valor = $sql_query -> fetch_array() ) { ?>
                     <tr>
                         <td><?php if($valor["status_conta"]) {echo "Paga";} else {echo "Não paga";} ?></td>
                         <td><?php echo $valor['nome_Gastador']; ?></td>
