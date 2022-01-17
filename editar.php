@@ -39,11 +39,12 @@
         SET nome_conta = '$nome_Conta',
             valor_conta = '$valor_Conta',
             data_vencimento = '$data_Vencimento',
-            status_conta = '$status',
-            nome_gastador = '$nome_Gastador',
-            nome_pagador = '$nome_Pagador'
+            status_conta = '$status'
         WHERE id_conta = '$codigo';");
     
+        echo "<script>
+            window.location.href='index.php'
+        </script>";
     }
 
 ?>
@@ -152,8 +153,9 @@
             </div>
             
             <!-- VOLTAR PRO INDEX DEPOIS DE CLICAR EM "ENVIAR" -->
-            <input type="submit" class="submit-btn" name="submit" value="Enviar">
+            <input onclick="redir()" type="submit" class="submit-btn" name="submit" value="Enviar">
         </form>
     </section>
+    <script src="extensao/js/index.js"></script>
 </body>
 </html>

@@ -12,58 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const showDetails = document.querySelector(".showDetails")
     const inputSubmit = document.querySelector(".submit-btn")
 
-    // inputSubmit.addEventListener(('click'), () => {
-    //     window.location.href = "index.php"
-    //     window.location.reload()
-    // })
 
-    btnsEditAdd.forEach((i => {
-       i.addEventListener('click', () => {
-           form.classList.remove("formInactive")
-            if (i.classList.contains("btnsEdit")) {
-                inputSubmit.name = "btnEditar"
-                inputSubmit.value = "Editar"
-            }
-            else {
-                inputSubmit.name = "btnAdicionar"
-                inputSubmit.value = "Adicionar"
-            }
-       })
-    }))
-
-    btnsDeleteShowDetails.forEach((i => {
-        i.addEventListener('click', () => {
-            let typeBtn
-            if (i.classList.contains("btnsDelete")){
-                typeBtn = 'delete'
-            }
-            else {
-                typeBtn = 'details'
-            }
-            let dados = {'action':typeBtn}
-			$.post("index.php",dados,function(result, status){
-				console.log(status)
-				console.log("RESULTADO DO ECHO --> ", result)
-			})
-        })
-    }))
-
-
-    btnsDelete.forEach((i) => {
-        const id = selectDetailsContainer(i, 3).replace(".", "")
-        i.addEventListener('click', () => {
-            const parent = nthParent(i, 3)
-            //const isFormInactive = form.classList.contains("formInactive")
-            for(let i = 0; i < showDetailsContainers.length; i++){
-                if (showDetailsContainers[i].classList.contains(id)) {
-                    showDetailsContainers[i].remove()
-                    form.classList.add("formInactive")
-                    showDetails.style.display = 'none'
-                }
-            }
-            parent.remove()
-        })
-    })
 
     btnsShowDetails.forEach((i) => {
         const containerId = selectDetailsContainer(i, 3)

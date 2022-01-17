@@ -2,16 +2,17 @@
 
     include("conexao.php");
 
-    $sql_codeGastador = "SELECT * FROM gastador";
+    $codigo = intval($_GET['usuario']);
+
+    $sql_codeGastador = "SELECT * FROM gastador WHERE id_gastador = '$codigo'";
     $sql_queryGastador = $conn -> query($sql_codeGastador) or die($conn -> error);
 
-    $sql_codePagador = "SELECT * FROM pagador";
+    $sql_codePagador = "SELECT * FROM pagador WHERE id_pagador = '$codigo'";
     $sql_queryPagador = $conn -> query($sql_codePagador) or die($conn -> error);
 
-    $sql_codeConta = "SELECT * FROM conta";
+    $sql_codeConta = "SELECT * FROM conta WHERE id_conta = '$codigo'";
     $sql_queryConta = $conn -> query($sql_codeConta) or die($conn -> error);
 
-    $codigo = intval($_GET['usuario']);
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
                 </tr>
             </thead>
             <tbody id="showDetailsContainer0" class="showDetailsContainer showDetailsContainer0">
-            <?php while($valor = $sql_queryGastador -> fetch_array() ) { ?>
+            <?php $valor = $sql_queryGastador -> fetch_array() ?>
                 <tr class="showDetailsTr">
                     <td>Gastador</td>
                     <td><?php echo $valor["nome_Gastador"]; ?></td>
@@ -44,8 +45,7 @@
                     <td><?php echo $valor["sexo_gastador"]; ?></td>
                     <td><?php echo $valor["cpf_gastador"]; ?></td>
                 </tr>
-            <?php } ?>
-            <?php while($valor = $sql_queryPagador -> fetch_array() ) { ?>
+            <?php $valor = $sql_queryPagador -> fetch_array() ?>
                 <tr class="showDetailsTr pagador">
                     <td>Pagador</td>
                     <td><?php echo $valor["nome_pagador"]; ?></td>
@@ -53,8 +53,7 @@
                     <td><?php echo $valor["sexo_pagador"]; ?></td>
                     <td><?php echo $valor["cpf_pagador"]; ?></td>
                 </tr>
-            <?php } ?>
-            <?php while($valor = $sql_queryConta -> fetch_array() ) { ?>
+            <?php $valor = $sql_queryConta -> fetch_array() ?>
                 <tr class="showDetailsTr conta">
                     <td>Conta</td>
                     <td><?php echo $valor["nome_conta"]; ?></td>
@@ -62,7 +61,6 @@
                     <td><?php echo date("d/m/Y", strtotime($valor["data_vencimento"])); ?></td>
                     <td><?php echo "R$ ". str_replace(".", ",", str_replace(",", " ", number_format($valor["valor_conta"], 2))); ?></td>
                 </tr>
-            <?php } ?>
             </tbody>
         </table>
     </section>

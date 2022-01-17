@@ -8,69 +8,6 @@
     WHERE c.id_gastador = g.id_gastador and c.id_pagador = p.id_pagador ORDER BY c.id_conta DESC";
     $sql_query = $conn -> query($sql_code) or die($conn -> error);
 
-    ///////////////////
-    ////EDITAR/////////
-    /////////////////// 
-
-    // else if (isset($_POST['btnEditar'])) {
-        
-    //     $nome_Gastador = $_POST['nome_Gastador'];
-    //     $cpf_Gastador = $_POST['cpf_Gastador'];
-    //     $data_Criacao_Conta = $_POST['data_Criacao_Conta'];
-    //     $sexo = $_POST['sexo'];
-
-    //     $nome_Pagador = $_POST['nome_Pagador'];
-    //     $cpf_Pagador = $_POST['cpf_Pagador'];
-    //     $data_Pagamento = $_POST['data_Pagamento'];
-    //     $sexo_Pagador = $_POST['sexo_Pagador'];
-
-    //     $nome_Conta = $_POST['nome_Conta'];
-    //     $valor_Conta = $_POST['valor_Conta'];
-    //     $data_Vencimento = $_POST['data_Vencimento'];
-    //     $status = $_POST['status'];
-
-    //     $gastador = mysqli_query($conn, "UPDATE gastador
-    //     SET nome_Gastador = '$nome_Gastador',
-    //         cpf_gastador = '$cpf_Gastador',
-    //         sexo_gastador = '$sexo',
-    //         data_criacao_conta = '$data_Criacao_Conta'
-    //     WHERE id_conta = '$codigo';");  //SQL
-
-    //     $pagador = mysqli_query($conn, "UPDATE pagador
-    //     SET nome_pagador = '$nome_Pagador',
-    //         cpf_pagador = '$cpf_Pagador',
-    //         sexo_pagador = '$sexo_Pagador',
-    //         data_pagamento = '$data_Pagamento'
-    //     WHERE id_conta = '$codigo';");  //SQL
-
-    //     $conta = mysqli_query($conn, "UPDATE conta
-    //     SET nome_conta = '$nome_Conta',
-    //         valor_conta = '$valor_Conta',
-    //         data_vencimento = '$data_Vencimento',
-    //         status_conta = '$status',
-    //         nome_gastador = '$nome_Gastador',
-    //         nome_pagador = '$nome_Pagador'
-    //     WHERE id_conta = '$codigo';");  //SQL
-
-    // }
-
-    ///////////////////
-    ////EXCLUIR////////
-    /////////////////// 
-
-    // else if (isset($_POST['action'])) {
-    //     if ($_POST['action'] == 'delete') {
-    //         echo("DELETADO");
-    //     }
-
-    // ///////////////////
-    // ////MOSTAR/////////
-    // /////////////////// 
-
-    //     else if (($_POST['action'] == 'details')) {
-    //         echo("DETALHADO");
-    //     }
-    // }   
 
 
 ?>
@@ -85,11 +22,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="extensao/css/table.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script></script>
     <title>Tabela de dívidas</title>
 </head>
 <body>
-    
-
     <section id="smallContainer" class="container smallContainer">
         <form action="index.php" method="POST">
 
@@ -121,8 +57,8 @@
                                 <a href="editar.php?usuario=<?php echo $valor['id_conta']; ?>" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
                             </span>
                             <span class="btn-group">
-                                <a value="delete" href="javascript: if(confirm('Confirme para excluir a conta selecionada'))
-                                location.href = 'deletar.php?usuario=<?php echo $valor['id_conta']; ?>'" class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
+                                <a value="delete" href="javascript: if(confirm('Confirme para excluir a conta selecionada')){
+                                    location.href = 'deletar.php?usuario=<?php echo $valor['id_conta']; ?>';location.reload(true)}else{location.reload(true)}" class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
                             </span>
                             <span class="btn-group">
                                 <a value="showDetails" href="visualizar.php?usuario=<?php echo $valor['id_conta']; ?>" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>

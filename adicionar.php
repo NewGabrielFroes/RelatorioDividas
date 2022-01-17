@@ -30,6 +30,10 @@
         $conta = mysqli_query($conn, "INSERT INTO conta(nome_conta, valor_conta, status_conta, data_vencimento, id_gastador, id_pagador) 
         VALUES ('$nome_Conta','$valor_Conta','$status','$data_Vencimento', '$id_Gastador', '$id_Pagador')");
 
+        echo "<script>
+            window.location.href='index.php'
+        </script>";
+
     }
 ?>
 
@@ -136,19 +140,10 @@
                 </fieldset>
             </div>
             
-            <!-- VOLTAR PRO INDEX DEPOIS DE CLICAR EM "ENVIAR" -->
             <input onclick="redir()" type="submit" class="submit-btn" name="submit" value="Enviar">
-            <!-- <?php
-                // if (isset($_POST['submit'])) {
-                //     echo "<script>window.location.href(index.php)</script>";
-                // }
-            ?> -->
+
         </form>
     </section>
-    <!-- <script src="extensao/js/index.js">
-        function redir() {
-            window.location.href="localhost/projetos_/controladorDividas/index.php"
-        }
-    </script> -->
+    <script src="extensao/js/index.js"></script>
 </body>
 </html>

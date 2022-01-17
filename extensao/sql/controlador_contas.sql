@@ -37,14 +37,6 @@ CREATE TABLE `conta` (
   `id_pagador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `conta`
---
-
-INSERT INTO `conta` (`id_conta`, `nome_conta`, `valor_conta`, `status_conta`, `data_vencimento`, `id_gastador`, `id_pagador`) VALUES
-(10, 'conta de luz', 1234, 0, '2022-01-12', 12, 12),
-(11, 'cartão de crédito', 900, 1, '2022-01-30', 13, 13),
-(12, 'academia', 250, 1, '2022-01-28', 14, 14);
 
 -- --------------------------------------------------------
 
@@ -55,21 +47,11 @@ INSERT INTO `conta` (`id_conta`, `nome_conta`, `valor_conta`, `status_conta`, `d
 CREATE TABLE `gastador` (
   `id_gastador` int(11) NOT NULL,
   `nome_Gastador` varchar(45) NOT NULL,
-  `cpf_gastador` double NOT NULL,
+  `cpf_gastador` varchar(15) NOT NULL,
   `sexo_gastador` varchar(10) NOT NULL,
   `data_criacao_conta` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `gastador`
---
-
-INSERT INTO `gastador` (`id_gastador`, `nome_Gastador`, `cpf_gastador`, `sexo_gastador`, `data_criacao_conta`) VALUES
-(12, 'Pedro', 123.456, 'Masculino', '2022-01-11'),
-(13, 'Hadassa Antônia', 582.052, 'Feminino', '2022-01-11'),
-(14, 'Márcio Nicolas', 194.593, 'Masculino', '2022-01-12');
-
--- --------------------------------------------------------
 
 --
 -- Estrutura da tabela `pagador`
@@ -78,19 +60,11 @@ INSERT INTO `gastador` (`id_gastador`, `nome_Gastador`, `cpf_gastador`, `sexo_ga
 CREATE TABLE `pagador` (
   `id_pagador` int(11) NOT NULL,
   `nome_pagador` varchar(45) NOT NULL,
-  `cpf_pagador` double NOT NULL,
+  `cpf_pagador` varchar(15) NOT NULL,
   `sexo_pagador` varchar(10) NOT NULL,
   `data_pagamento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `pagador`
---
-
-INSERT INTO `pagador` (`id_pagador`, `nome_pagador`, `cpf_pagador`, `sexo_pagador`, `data_pagamento`) VALUES
-(12, 'José', 132.234, 'Feminino', '2022-01-19'),
-(13, 'Isabella Joana', 768.281, 'Feminino', '2022-01-28'),
-(14, 'Rosângela Maitê', 903.104, 'Feminino', '2022-01-06');
 
 --
 -- Índices para tabelas despejadas
@@ -124,19 +98,19 @@ ALTER TABLE `pagador`
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `id_conta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_conta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `gastador`
 --
 ALTER TABLE `gastador`
-  MODIFY `id_gastador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_gastador` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `pagador`
 --
 ALTER TABLE `pagador`
-  MODIFY `id_pagador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pagador` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas
