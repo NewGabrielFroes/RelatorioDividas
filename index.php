@@ -27,10 +27,7 @@
 </head>
 <body>
     <section id="smallContainer" class="container smallContainer">
-        <form action="index.php" method="POST">
-
             <a href="adicionar.php" class="btn btn-dark btnsEditAdd btnsAdd"><i class="bi bi-plus-circle"></i> Adicionar dívida</a>
-
             <table>
                 <thead>
                     <tr>
@@ -68,8 +65,6 @@
                     </tr>
                 </tbody>
             </table>
-            
-        </form>
     </section>
     <script src="extensao/js/index.js"></script>
 </body>
