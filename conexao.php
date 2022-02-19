@@ -3,7 +3,7 @@
 $hostname = "localhost";
 $bancodedados = "controlador_contas";
 $usuario = "usuario";
-$senha = "usr01";
+$senha = "rspmmRTnm9M5DKz@";
 
 $conn = new mysqli($hostname, $usuario, $senha, $bancodedados);
 if ($conn->connect_errno) {
