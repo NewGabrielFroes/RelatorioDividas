@@ -1,30 +1,32 @@
 <?php
-
-    include("conexao.php");
+    
+    require_once("extensao/dao/database.class.php");
+    include_once("extensao/dao/devedor/devedorDAO.class.php");
+    include_once("extensao/dao/cobrador/cobradorDAO.class.php");
+    include_once("extensao/dao/conta/contaDAO.class.php");
 
     $codigo = intval($_GET['usuario']);
+    $devedorDAO = new DevedorDAO();
+    $cobradorDAO = new CobradorDAO();
+    $contaDAO = new ContaDAO();
 
-    $sql_code = "DELETE FROM conta WHERE id_conta = $codigo;";
-    $sql_query = $conn -> query($sql_code) or die($conn -> error);
+    $where = "idDevedor = ?";
+    $params = array($codigo);
+    $rs = $devedorDAO->delete($where,$params);
+    var_dump($rs);
 
-    $sql_code = "DELETE FROM pagador WHERE id_pagador = $codigo;";
-    $sql_query = $conn -> query($sql_code) or die($conn -> error);
+    $where = "idCobrador = ?";
+    $params = array($codigo);
+    $rs = $cobradorDAO->delete($where,$params);
+    var_dump($rs);
 
-    $sql_code = "DELETE FROM gastador WHERE id_gastador = $codigo;";
-    $sql_query = $conn -> query($sql_code) or die($conn -> error);
+    $where = "idConta = ?";
+    $params = array($codigo);
+    $rsConta = $contaDAO->delete($where,$params);
+    var_dump($rs);
 
-
-    if ($sql_query) {
-        echo "
+    echo "
         <script>
-            alert('A conta foi deletada com sucesso');
             location.href = 'index.php';
         </script>";
-    } else {
-        echo "
-        <script>
-            location.href = 'index.php';
-        </script>";
-    }
 
-?>

@@ -19,8 +19,8 @@ class Conta{
 	private $valorConta = 0.0;
 	private $statusConta = false;
     private $dataVencimento = "";
-    private $idGastador = 0;
-    private $idPagador = 0;
+    private $idDevedor = 0;
+    private $idCobrador = 0;
 	
     
 	public function getIdConta(){
@@ -63,19 +63,19 @@ class Conta{
         $this->dataVencimento = $dataVencimento;
     }
 
-    public function getIdGastador(){
-        return $this->idGastador;
+    public function getIdDevedor(){
+        return $this->idDevedor;
     }
 
-    public function setIdGastador($idGastador){
-        $this->idGastador = $idGastador;
+    public function setIdDevedor($idDevedor){
+        $this->idDevedor = $idDevedor;
     }
 
-    public function getIdPagador(){
-        return $this->idPagador;
+    public function getIdCobrador(){
+        return $this->idCobrador;
     }
 
-    public function setIdPagador($idPagador){
-        $this->idPagador = $idPagador;
+    public function setIdCobrador($idCobrador){
+        $this->idCobrador = $idCobrador;
     }
 }

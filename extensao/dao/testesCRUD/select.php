@@ -4,8 +4,9 @@ include_once("devedor/devedorDAO.class.php");
 include_once("cobrador/cobradorDAO.class.php");
 include_once("conta/contaDAO.class.php");
 
-$devedorDAO = new devedorDAO();
-$cobradorDAO = new cobradorDAO();
+
+$devedorDAO = new DevedorDAO();
+$cobradorDAO = new CobradorDAO();
 $contaDAO = new ContaDAO();
 
 $arrDevedor = $devedorDAO->load();

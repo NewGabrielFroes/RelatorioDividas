@@ -1,18 +1,45 @@
 <?php
 
-    include("conexao.php");
-
+    require_once("extensao/dao/database.class.php");
+    include_once("extensao/dao/devedor/devedorDAO.class.php");
+    include_once("extensao/dao/cobrador/cobradorDAO.class.php");
+    include_once("extensao/dao/conta/contaDAO.class.php");
+    
     $codigo = intval($_GET['usuario']);
 
-    $sql_codeGastador = "SELECT * FROM gastador WHERE id_gastador = '$codigo'";
-    $sql_queryGastador = $conn -> query($sql_codeGastador) or die($conn -> error);
+    $devedorDAO = new DevedorDAO();
+    $cobradorDAO = new CobradorDAO();
+    $contaDAO = new ContaDAO();
+    
+    $arrDevedor = $devedorDAO->load();
+    $arrCobrador = $cobradorDAO->load();
+    $arrConta = $contaDAO->load();
+    
+    $fields = "*";
+    $add = "WHERE idDevedor = $codigo";
+    $arr = $devedorDAO->load($fields, $add);
+    $nomeDevedor = $arr[0]->getNomeDevedor();
+    $sexoDevedor = $arr[0]->getSexoDevedor();
+    $cpfDevedor = $arr[0]->getCpfDevedor();
+    $dataCriacaoConta = date("d/m/Y", strtotime($arr[0]->getDataCriacaoConta()));
 
-    $sql_codePagador = "SELECT * FROM pagador WHERE id_pagador = '$codigo'";
-    $sql_queryPagador = $conn -> query($sql_codePagador) or die($conn -> error);
+    $fields = "*";
+    $add = "WHERE idCobrador = $codigo";
+    $arr = $cobradorDAO->load($fields, $add);
+    $nomeCobrador = $arr[0]->getNomeCobrador();
+    $sexoCobrador= $arr[0]->getSexoCobrador();
+    $cpfCobrador = $arr[0]->getCpfCobrador();
+    $dataPagamento= date("d/m/Y", strtotime($arr[0]->getDataPagamento()));
 
-    $sql_codeConta = "SELECT * FROM conta WHERE id_conta = '$codigo'";
-    $sql_queryConta = $conn -> query($sql_codeConta) or die($conn -> error);
-
+    $fields = "*";
+    $add = "WHERE idConta= $codigo";
+    $arr = $contaDAO->load($fields, $add);
+    $nomeConta= $arr[0]->getNomeConta();
+    $valorConta = "R$ ". str_replace(".", ",", str_replace(",", " ", number_format($arr[0]->getValorConta(), 2)));
+    $statusConta = $arr[0]->getStatusConta() ?  "Paga" : "Não paga";
+    $dataVencimento = date("d/m/Y", strtotime($arr[0]->getDataVencimento()));
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -37,29 +64,26 @@
                 </tr>
             </thead>
             <tbody id="showDetailsContainer0" class="showDetailsContainer showDetailsContainer0">
-            <?php $valor = $sql_queryGastador -> fetch_array() ?>
                 <tr class="showDetailsTr">
-                    <td>Gastador</td>
-                    <td><?php echo $valor["nome_Gastador"]; ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($valor["data_criacao_conta"])); ?></td>
-                    <td><?php echo $valor["sexo_gastador"]; ?></td>
-                    <td><?php echo $valor["cpf_gastador"]; ?></td>
+                    <td>Devedor</td>
+                    <td><?php echo $nomeDevedor; ?></td>
+                    <td><?php echo $sexoDevedor; ?></td>
+                    <td><?php echo $cpfDevedor; ?></td>
+                    <td><?php echo $dataCriacaoConta; ?></td>
                 </tr>
-            <?php $valor = $sql_queryPagador -> fetch_array() ?>
                 <tr class="showDetailsTr pagador">
-                    <td>Pagador</td>
-                    <td><?php echo $valor["nome_pagador"]; ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($valor["data_pagamento"])); ?></td>
-                    <td><?php echo $valor["sexo_pagador"]; ?></td>
-                    <td><?php echo $valor["cpf_pagador"]; ?></td>
+                    <td>Cobrador</td>
+                    <td><?php echo $nomeCobrador; ?></td>
+                    <td><?php echo $sexoCobrador; ?></td>
+                    <td><?php echo $cpfCobrador; ?></td>
+                    <td><?php echo $dataPagamento; ?></td>
                 </tr>
-            <?php $valor = $sql_queryConta -> fetch_array() ?>
                 <tr class="showDetailsTr conta">
                     <td>Conta</td>
-                    <td><?php echo $valor["nome_conta"]; ?></td>
-                    <td><?php if($valor["status_conta"]) {echo "Paga";} else {echo "Não paga";} ?></td>
-                    <td><?php echo date("d/m/Y", strtotime($valor["data_vencimento"])); ?></td>
-                    <td><?php echo "R$ ". str_replace(".", ",", str_replace(",", " ", number_format($valor["valor_conta"], 2))); ?></td>
+                    <td><?php echo $nomeConta; ?></td>
+                    <td><?php echo $statusConta; ?></td>
+                    <td><?php echo $valorConta; ?></td>
+                    <td><?php echo $dataVencimento; ?></td>
                 </tr>
             </tbody>
         </table>

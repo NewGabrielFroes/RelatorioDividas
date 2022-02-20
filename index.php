@@ -1,14 +1,19 @@
 <?php
 
-    include("conexao.php");
-
-    $sql_code = "SELECT 
-    c.status_conta, g.nome_Gastador, c.nome_conta, c.valor_conta, c.data_vencimento, c.id_conta, p.nome_pagador
-    FROM gastador g, pagador p, conta c 
-    WHERE c.id_gastador = g.id_gastador and c.id_pagador = p.id_pagador ORDER BY c.id_conta DESC";
-    $sql_query = $conn -> query($sql_code) or die($conn -> error);
+    require_once("extensao/dao/database.class.php");
+    include_once("extensao/dao/devedor/devedorDAO.class.php");
+    include_once("extensao/dao/cobrador/cobradorDAO.class.php");
+    include_once("extensao/dao/conta/contaDAO.class.php");
 
 
+    $devedorDAO = new DevedorDAO();
+    $cobradorDAO = new CobradorDAO();
+    $contaDAO = new ContaDAO();
+    
+
+    $arrDevedor = $devedorDAO->load();
+    $arrCobrador = $cobradorDAO->load();
+    $arrConta = $contaDAO->load();
 
 ?>
 
@@ -36,32 +41,53 @@
                         <th>DÍVIDA</th>
                         <th>VALOR</th>
                         <th>DATA</th>
-                        <th>PAGADOR</th>
+                        <th>COBRADOR</th>
                         <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php while($valor = $sql_query -> fetch_array() ) { ?>
-                    <tr>
-                        <td><?php if($valor["status_conta"]) {echo "Paga";} else {echo "Não paga";} ?></td>
-                        <td><?php echo $valor['nome_Gastador']; ?></td>
-                        <td><?php echo $valor["nome_conta"]; ?></td>
-                        <td><?php echo "R$ ". str_replace(".", ",", str_replace(",", " ", number_format($valor["valor_conta"], 2))); ?></td>
-                        <td><?php echo date("d/m/Y", strtotime($valor["data_vencimento"])); ?></td>
-                        <td><?php echo $valor['nome_pagador']; ?></td>
-                        <td scope="row" colspan="3">
-                            <span class="btn-group">
-                                <a href="editar.php?usuario=<?php echo $valor['id_conta']; ?>" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
-                            </span>
-                            <span class="btn-group">
-                                <a value="delete" href="javascript: if(confirm('Confirme para excluir a conta selecionada')){
-                                    location.href = 'deletar.php?usuario=<?php echo $valor['id_conta']; ?>';location.reload(true)}else{location.reload(true)}" class="btns btnsDelete"><i class="bi bi-trash-fill"></i></a>
-                            </span>
-                            <span class="btn-group">
-                                <a value="showDetails" href="visualizar.php?usuario=<?php echo $valor['id_conta']; ?>" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
-                            </span>
-                        </td>
-                    <?php } ?>
+                    <?php foreach ($arrConta as $key => $row) { ?>
+                        <?php
+                            $idDevedor = $row->getIdDevedor();
+                            $fields = "nomeDevedor";
+                            $add = "WHERE idDevedor = $idDevedor";
+                            $arr = $devedorDAO->load($fields, $add);
+                            $nomeDevedor = $arr[0]->getNomeDevedor();
+
+                            $idCobrador = $row->getIdCobrador();
+                            $fields = "nomeCobrador";
+                            $add = "WHERE idCobrador = $idCobrador";
+                            $arr = $cobradorDAO->load($fields, $add);
+                            $nomeCobrador = $arr[0]->getNomeCobrador();
+
+                            $idConta = $row->getIdConta();
+                            $valorConta = "R$ ". str_replace(".", ",", str_replace(",", " ", number_format($row->getValorConta(), 2)));
+                            $dataVencimento = date("d/m/Y", strtotime($row->getDataVencimento()));
+                            $statusConta = $row->getStatusConta() ?  "Paga" : "Não paga";
+                            $nomeConta = $row->getNomeConta();
+                        ?>
+                        <tr>
+                            <td><?php echo $statusConta; ?></td>
+                            <td><?php echo $nomeDevedor; ?></td>
+                            <td><?php echo $nomeConta; ?></td>
+                            <td><?php echo $valorConta; ?></td>
+                            <td><?php echo $dataVencimento; ?></td>
+                            <td><?php echo $nomeCobrador; ?></td>
+                            <td scope="row" colspan="3">
+                                <span class="btn-group">
+                                    <a href="editar.php?usuario=<?php echo $idConta; ?>" class="btns btnsEditAdd btnsEdit"><i class="bi bi-pencil-fill"></i> </a>
+                                </span>
+                                <span class="btn-group">
+                                    <a value="delete" href="javascript: if(confirm('Confirme para excluir a conta selecionada')){
+                                        location.href = 'deletar.php?usuario=<?php echo $idConta; ?>';}" class="btns btnsDelete">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </a>
+                                </span>
+                                <span class="btn-group">
+                                    <a value="showDetails" href="visualizar.php?usuario=<?php echo $idConta; ?>" class="btns btnsShowDetails"><i class="bi bi-eye-fill"></i></a>
+                                </span>
+                            </td>
+                        <?php } ?>
                     </tr>
                 </tbody>
             </table>

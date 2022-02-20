@@ -1,34 +1,44 @@
 <?php
 
-    include("conexao.php");
+    require_once("extensao/dao/database.class.php");
+    include_once("extensao/dao/devedor/devedorDAO.class.php");
+    include_once("extensao/dao/cobrador/cobradorDAO.class.php");
+    include_once("extensao/dao/conta/contaDAO.class.php");
 
     if (isset($_POST['submit'])) {
     
-        $nome_Gastador = $_POST['nome_Gastador'];
-        $cpf_Gastador = $_POST['cpf_Gastador'];
-        $data_Criacao_Conta = $_POST['data_Criacao_Conta'];
-        $sexo = $_POST['sexo'];
+        $nomeDevedor = $_POST['nomeDevedor'];
+        $cpfDevedor = $_POST['cpfDevedor'];
+        $sexoDevedor = $_POST['sexoDevedor'];
+        $dataCriacaoConta = $_POST['dataCriacaoConta'];
+        
+        $nomeCobrador = $_POST['nomeCobrador'];
+        $cpfCobrador = $_POST['cpfCobrador'];
+        $sexoCobrador = $_POST['sexoCobrador'];
+        $dataPagamento = $_POST['dataPagamento'];
 
-        $nome_Pagador = $_POST['nome_Pagador'];
-        $cpf_Pagador = $_POST['cpf_Pagador'];
-        $data_Pagamento = $_POST['data_Pagamento'];
-        $sexo_Pagador = $_POST['sexo_Pagador'];
+        $nomeConta = $_POST['nomeConta'];
+        $valorConta = $_POST['valorConta'];
+        $statusConta = $_POST['statusConta'];
+        $dataVencimento = $_POST['dataVencimento'];
+       
+        $devedorDAO = new DevedorDAO();
+        $fields = "nomeDevedor,cpfDevedor,sexoDevedor,dataCriacaoConta";
+        $params = array($nomeDevedor, $cpfDevedor, $sexoDevedor, $dataCriacaoConta);
+        $idDevedor = $devedorDAO->insert($fields,$params);
+        var_dump($idDevedor);
+        
+        $cobradorDAO = new CobradorDAO();
+        $fields = "nomeCobrador,cpfCobrador,sexoCobrador,dataPagamento";
+        $params = array($nomeCobrador, $cpfCobrador, $sexoCobrador, $dataPagamento);
+        $idCobrador = $cobradorDAO->insert($fields,$params);
+        var_dump($idCobrador);
 
-        $nome_Conta = $_POST['nome_Conta'];
-        $valor_Conta = $_POST['valor_Conta'];
-        $data_Vencimento = $_POST['data_Vencimento'];
-        $status = $_POST['status'];
-
-        $gastador = mysqli_query($conn, "INSERT INTO gastador(nome_Gastador, cpf_gastador, sexo_gastador, data_criacao_conta) 
-        VALUES ('$nome_Gastador', '$cpf_Gastador', '$sexo', '$data_Criacao_Conta')");
-        $id_Gastador = mysqli_insert_id($conn);
-
-        $pagador = mysqli_query($conn, "INSERT INTO pagador(nome_pagador, cpf_pagador, sexo_pagador, data_pagamento) 
-        VALUES ('$nome_Pagador','$cpf_Pagador','$sexo_Pagador','$data_Pagamento')");
-        $id_Pagador = mysqli_insert_id($conn);
-
-        $conta = mysqli_query($conn, "INSERT INTO conta(nome_conta, valor_conta, status_conta, data_vencimento, id_gastador, id_pagador) 
-        VALUES ('$nome_Conta','$valor_Conta','$status','$data_Vencimento', '$id_Gastador', '$id_Pagador')");
+        $contaDAO = new ContaDAO();
+        $fields = "nomeConta,valorConta,statusConta,dataVencimento,idDevedor,idCobrador";
+        $params = array($nomeConta, $valorConta, $statusConta, $dataVencimento, $idDevedor, $idCobrador);
+        $rs = $contaDAO->insert($fields,$params);   
+        var_dump($rs);
 
         echo "<script>
             window.location.href='index.php'
@@ -57,27 +67,27 @@
                 <fieldset class="coluna">
                     <legend class="titulo">Cliente</legend>
                     <div class="inputBox">
-                        <label for="nome_Gastador">Nome Completo :</label>
-                        <input name="nome_Gastador" id="nome_Gastador" type="text" placeholder="Romário de Souza" required>
+                        <label for="nomeDevedor">Nome Completo :</label>
+                        <input name="nomeDevedor" id="nomeDevedor" type="text" placeholder="Romário de Souza" required>
                     </div>
                     <div class="inputBox">
-                        <label for="cpf_Gastador">CPF :</label>
-                        <input name="cpf_Gastador" id="cpf_Gastador" type="text" placeholder="000.000.000-00" required>
+                        <label for="cpfDevedor">CPF :</label>
+                        <input name="cpfDevedor" id="cpfDevedor" type="text" placeholder="000.000.000-00" required>
                     </div>
                     <div class="inputBox">
-                        <label for="data_Criacao_Conta">Data da geração da dívida :</label>
-                        <input name="data_Criacao_Conta" id="data_Criacao_Conta" type="date" placeholder="01/01/2001" required>
+                        <label for="dataCriacaoConta">Data da geração da dívida :</label>
+                        <input name="dataCriacaoConta" id="dataCriacaoConta" type="date" placeholder="01/01/2001" required>
                     </div>
                     <div class="inputBox">
                         <label>Gênero :</label>
                         <div class="opcoes">
                             <div class="opcao">
-                                <input name="sexo" class="opcao__input" id="masculino" value="Masculino" type="radio" checked>
-                                <label class="opcao__label" for="masculino">Masculino</label>
+                                <input name="sexoDevedor" class="opcao__input" id="masculinoDevedor" value="Masculino" type="radio" checked>
+                                <label class="opcao__label" for="masculinoDevedor">Masculino</label>
                             </div>
                             <div class="opcao">
-                                <input name="sexo" class="opcao__input" id="feminino" value="Feminino" type="radio">
-                                <label class="opcao__label" for="feminino">Feminino</label>
+                                <input name="sexoDevedor" class="opcao__input" id="femininoDevedor" value="Feminino" type="radio">
+                                <label class="opcao__label" for="femininoDevedor">Feminino</label>
                             </div>
                         </div>
                     </div>
@@ -85,26 +95,26 @@
                 <fieldset class="coluna">
                     <legend class="titulo">Cobrador</legend>
                     <div class="inputBox">
-                        <label for="nome_Pagador">Nome Completo :</label>
-                        <input name="nome_Pagador" id="nome_Pagador" type="text" placeholder="José Roberto Gama" required>
+                        <label for="nomeCobrador">Nome Completo :</label>
+                        <input name="nomeCobrador" id="nomeCobrador" type="text" placeholder="José Roberto Gama" required>
                     </div>
                     <div class="inputBox">
-                        <label for="cpf_Pagador">CPF :</label>
-                        <input name="cpf_Pagador" id="cpf_Pagador" type="text" placeholder="000.000.000-00" required>
+                        <label for="cpfCobrador">CPF :</label>
+                        <input name="cpfCobrador" id="cpfCobrador" type="text" placeholder="000.000.000-00" required>
                     </div>
                     <div class="inputBox">
-                        <label for="data_Pagamento">Data do pagamento da dívida :</label>
-                        <input name="data_Pagamento" id="data_Pagamento" type="date" placeholder="01/01/2001" required>
+                        <label for="dataPagamento">Data do pagamento da dívida :</label>
+                        <input name="dataPagamento" id="dataPagamento" type="date" placeholder="01/01/2001" required>
                     </div>
                     <div class="inputBox">
                         <label>Gênero :</label>
                         <div class="opcoes">
                             <div class="opcao">
-                                <input name="sexo_Pagador" class="opcao__input" id="masculinoCobrador" value="Masculino" type="radio">
+                                <input name="sexoCobrador" class="opcao__input" id="masculinoCobrador" value="Masculino" type="radio">
                                 <label class="opcao__label" for="masculinoCobrador">Masculino</label>
                             </div>
                             <div class="opcao">
-                                <input name="sexo_Pagador" class="opcao__input" id="femininoCobrador" value="Feminino" type="radio" checked>
+                                <input name="sexoCobrador" class="opcao__input" id="femininoCobrador" value="Feminino" type="radio" checked>
                                 <label class="opcao__label" for="femininoCobrador">Feminino</label>
                             </div>
                         </div>
@@ -113,26 +123,26 @@
                 <fieldset class="coluna">
                     <legend class="titulo">Dívida</legend>
                     <div class="inputBox">
-                        <label for="nome_Conta">Nome da conta :</label>
-                        <input name="nome_Conta" id="nome_Conta" type="text" placeholder="conta de luz" required>
+                        <label for="nomeConta">Nome da conta :</label>
+                        <input name="nomeConta" id="nomeConta" type="text" placeholder="conta de luz" required>
                     </div>
                     <div class="inputBox">
-                        <label for="valor_Conta">Valor da dívida(em reais) :</label>
-                        <input name="valor_Conta" id="valor_Conta" type="number" placeholder="R$" required>
+                        <label for="valorConta">Valor da dívida(em reais) :</label>
+                        <input name="valorConta" id="valorConta" type="number" placeholder="R$" required>
                     </div>
                     <div class="inputBox">
-                        <label for="data_Vencimento">Data de vencimento :</label>
-                        <input name="data_Vencimento" id="data_Vencimento" type="date" required>
+                        <label for="dataVencimento">Data de vencimento :</label>
+                        <input name="dataVencimento" id="dataVencimento" type="date" required>
                     </div>
                     <div class="inputBox">
                         <label>Status</label>
                         <div class="opcoes">
                             <div class="opcao">
-                                <input name="status" class="opcao__input" id="paga" value="1" type="radio">
+                                <input name="statusConta" class="opcao__input" id="paga" value="1" type="radio">
                                 <label class="opcao__label" for="paga">Paga</label>
                             </div>
                             <div class="opcao">
-                                <input name="status" class="opcao__input" id="naopaga" value="0" type="radio" checked>
+                                <input name="statusConta" class="opcao__input" id="naopaga" value="0" type="radio" checked>
                                 <label class="opcao__label" for="naopaga">Não paga</label>
                             </div>
                         </div>

@@ -208,19 +208,19 @@ input:focus {
   content: "Nome";
 }
 
-.showDetailsTr > td:nth-child(3)::before {
+.showDetailsTr > td:nth-child(5)::before {
   content: "Criação da conta";
 }
 
-.showDetailsTr > td:nth-child(4)::before {
+.showDetailsTr > td:nth-child(3)::before {
   content: "Sexo";
 }
 
-.showDetailsTr > td:nth-child(5)::before {
+.showDetailsTr > td:nth-child(4)::before {
   content: "CPF";
 }
 
-.pagador > td:nth-child(3)::before {
+.pagador > td:nth-child(5)::before {
   content: "Pagamento da conta";
 }
 
@@ -228,11 +228,11 @@ input:focus {
   content: "Status";
 }
 
-.conta > td:nth-child(4)::before {
+.conta > td:nth-child(5)::before {
   content: "Data de vencimento";
 }
 
-.conta > td:nth-child(5)::before {
+.conta > td:nth-child(4)::before {
   content: "Valor";
 }
 

@@ -49,7 +49,7 @@ abstract class Database{
 		$rs = (object)[];
 
 		if(isset($class)){
-			$rs = $query->fetchAll(PDO::FETCH_CLASS,$class) or die(print_r($query->errorInfo(), true));
+			$rs = $query->fetchAll(PDO::FETCH_CLASS,$class);
 		}else{
 			$rs = $query->fetchAll(PDO::FETCH_OBJ) or die(print_r($query->errorInfo(), true));
 		}
@@ -77,7 +77,7 @@ abstract class Database{
 	public function deleteDB($sql,$params=null){
 		$query=$this->connect()->prepare($sql);
 		$query->execute($params);
-		$rs = $query->rowCount() or die(print_r($query->errorInfo(), true));
+		$rs = $query->rowCount();
 		self::__destruct();
 		return $rs;
     }

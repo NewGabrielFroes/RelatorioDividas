@@ -5,14 +5,14 @@ include_once("cobrador/cobradorDAO.class.php");
 include_once("conta/contaDAO.class.php");
 
 
-$devedorDAO = new devedorDAO();
+$devedorDAO = new DevedorDAO();
 $fields = "nomeDevedor,cpfDevedor,sexoDevedor,dataCriacaoConta";
 $data = date("Y-m-d", strtotime("20-02-2022"));
 $params = array("Pedro","888888888","Masculino",$data);
 $idDevedor = $devedorDAO->insert($fields,$params);
 var_dump($idDevedor);
 
-$cobradorDAO = new cobradorDAO();
+$cobradorDAO = new CobradorDAO();
 $fields = "nomeCobrador,cpfCobrador,sexoCobrador,dataPagamento";
 $data = date("Y-m-d", strtotime("21-02-2022"));
 $params = array("Maria","77777777","Feminino",$data);
