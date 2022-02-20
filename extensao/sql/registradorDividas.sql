@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 19/02/2022 às 15:25
+-- Tempo de geração: 20/02/2022 às 02:10
 -- Versão do servidor: 10.4.22-MariaDB
 -- Versão do PHP: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `controlador_contas`
+-- Banco de dados: `registradorDividas`
 --
 
 -- --------------------------------------------------------
@@ -34,6 +34,14 @@ CREATE TABLE `cobrador` (
   `sexoCobrador` varchar(10) NOT NULL,
   `dataPagamento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `cobrador`
+--
+
+INSERT INTO `cobrador` (`idCobrador`, `nomeCobrador`, `cpfCobrador`, `sexoCobrador`, `dataPagamento`) VALUES
+(44, 'Barbara Gordon', '245.116.710-60', 'Feminino', '2022-02-12'),
+(47, 'Asilo Arkham', '077.063.360-93', 'Masculino', '2022-02-10');
 
 -- --------------------------------------------------------
 
@@ -51,6 +59,14 @@ CREATE TABLE `conta` (
   `idCobrador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Despejando dados para a tabela `conta`
+--
+
+INSERT INTO `conta` (`idConta`, `nomeConta`, `valorConta`, `statusConta`, `dataVencimento`, `idDevedor`, `idCobrador`) VALUES
+(44, 'gasolina do batmóvel', 5000, 1, '2022-02-20', 44, 44),
+(47, 'plástica no rosto', 15000, 0, '2022-04-19', 47, 47);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +80,14 @@ CREATE TABLE `devedor` (
   `sexoDevedor` varchar(10) NOT NULL,
   `dataCriacaoConta` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Despejando dados para a tabela `devedor`
+--
+
+INSERT INTO `devedor` (`idDevedor`, `nomeDevedor`, `cpfDevedor`, `sexoDevedor`, `dataCriacaoConta`) VALUES
+(44, 'Bruce Wayne', '045.756.070-37', 'Masculino', '2022-02-10'),
+(47, 'Duas-Caras', '875.346.540-76', 'Masculino', '2022-02-03');
 
 --
 -- Índices para tabelas despejadas
@@ -97,19 +121,19 @@ ALTER TABLE `devedor`
 -- AUTO_INCREMENT de tabela `cobrador`
 --
 ALTER TABLE `cobrador`
-  MODIFY `idCobrador` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCobrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de tabela `conta`
 --
 ALTER TABLE `conta`
-  MODIFY `idConta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idConta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de tabela `devedor`
 --
 ALTER TABLE `devedor`
-  MODIFY `idDevedor` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDevedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- Restrições para tabelas despejadas

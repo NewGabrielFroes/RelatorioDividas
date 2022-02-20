@@ -79,7 +79,7 @@
                     <td><?php echo $dataPagamento; ?></td>
                 </tr>
                 <tr class="showDetailsTr conta">
-                    <td>Conta</td>
+                    <td>Dívida</td>
                     <td><?php echo $nomeConta; ?></td>
                     <td><?php echo $statusConta; ?></td>
                     <td><?php echo $valorConta; ?></td>

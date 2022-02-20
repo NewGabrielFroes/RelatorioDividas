@@ -1,8 +1,8 @@
 <?php
-require_once("database.class.php");
-include_once("devedor/devedorDAO.class.php");
-include_once("cobrador/cobradorDAO.class.php");
-include_once("conta/contaDAO.class.php");
+require_once("../database.class.php");
+include_once("../devedor/devedorDAO.class.php");
+include_once("../cobrador/cobradorDAO.class.php");
+include_once("../conta/contaDAO.class.php");
 
 
 $devedorDAO = new DevedorDAO();

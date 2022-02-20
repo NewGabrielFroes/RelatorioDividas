@@ -1,8 +1,8 @@
 <?php
-require_once("database.class.php");
-include_once("devedor/devedorDAO.class.php");
-include_once("cobrador/cobradorDAO.class.php");
-include_once("conta/contaDAO.class.php");
+require_once("../database.class.php");
+include_once("../devedor/devedorDAO.class.php");
+include_once("../cobrador/cobradorDAO.class.php");
+include_once("../conta/contaDAO.class.php");
 
 
 $devedorDAO = new DevedorDAO();
@@ -33,7 +33,7 @@ foreach ($arrConta as $key => $row){
 
         
 $fields = "idConta,nomeConta";
-$add = "WHERE idConta = 17";
+$add = "WHERE idConta = 50"; //Escolha um idConta que exista na tabela
 $arr = $contaDAO->load($fields,$add);
 echo "<br>\n" . $arr[0]->getIdConta() . " - " . $arr[0]->getNomeConta() . "<br>\n";
             
