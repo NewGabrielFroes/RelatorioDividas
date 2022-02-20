@@ -1,7 +1,7 @@
 <?php
 
 $hostname = "localhost";
-$bancodedados = "registradorDividas";
+$bancodedados = "relatorioDividas";
 $usuario = "usuario";
 $senha = "rspmmRTnm9M5DKz@";
 

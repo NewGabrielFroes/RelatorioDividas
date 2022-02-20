@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 20/02/2022 às 02:10
+-- Tempo de geração: 20/02/2022 às 02:14
 -- Versão do servidor: 10.4.22-MariaDB
 -- Versão do PHP: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `registradorDividas`
+-- Banco de dados: `relatorioDividas`
 --
 
 -- --------------------------------------------------------

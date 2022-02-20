@@ -5,7 +5,7 @@ abstract class Database{
 	private static $port     = "3306";
 	private static $user     = "usuario";
 	private static $password = "rspmmRTnm9M5DKz@";
-	private static $db       = "registradorDividas"; 
+	private static $db       = "relatorioDividas"; 
 	
 	private function __construct(){}
 	
